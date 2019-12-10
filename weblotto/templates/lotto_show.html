@@ -14,18 +14,25 @@
 
 <form method="POST" action='/search4'>
 	<table>
-		<p>Use this form to submit a search lotto Number:</p>
-		<tr>	
-			<td>로또 추첨 횟수 :</td>
-			<td><input name='ronum' type='TEXT' value='10' onkeypress="inNumber();" onfocus="this.value=''" style="maxlength:3;width:100;"></td>
+		<tr>			
+				<td>회차</td>
+				<td>추첨일</td>
+				<td>1th N</td>
+				<td>2th N</td>
+				<td>3th N</td>
+				<td>4th N</td>
+				<td>5th N</td>
+				<td>6th N</td>
+				<td>Services N</td>
 		</tr>
-		<tr>
-			<td>순위 선택 :</td>
-			<td><input name='clnum' type='TEXT' value='6' onkeypress="inNumber();" onfocus="this.value=''" style="maxlength:2;width:100;"></td>
-		</tr>
+		{% for data_row in  the_results %}
+			<tr>
+				{% for item in data_row %}
+					<td>{{item}}</td>
+				{% endfor %}
+			</tr>
+		{% endfor %}
 	</table>
-	<p>When you're ready, Click this button:</p>
-	<p><input value='Do it!' type='SUBMIT'></p>
 </form>
 
 {% endblock %}

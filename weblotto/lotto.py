@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import lottodef
+import pymysql
 
 app = Flask(__name__)
 
@@ -42,8 +43,26 @@ def entry_page() -> 'html':
 
 @app.route('/lotto')
 def lotto_his() -> 'html':
+
+    dbconfig={'host':'127.0.0.1',
+                  'port':3306,
+                  'user':'lotto',
+                  'password':'lottopasswd',
+                  'database':'lottodb',
+                  'charset':'utf8',}
+    conn = pymysql.Connect(**dbconfig)
+    
+    with conn.cursor() as cursor:
+        __SQL = """select lotto_event, lotto_date, lotto_num1,
+                    lotto_num2, lotto_num3, lotto_num4,
+                    lotto_num5, lotto_num6, lotto_num7 from lotto_db;"""
+        cursor.execute(__SQL)
+        results = cursor.fetchall()
+        conn.commit()
+    
     return render_template('lotto_show.html',
-                           the_title='Lotto History List!')
+                           the_title='Lotto History List!',
+                           the_results = results, )
 
 if __name__ == '__main__':
     app.run(debug=True)
