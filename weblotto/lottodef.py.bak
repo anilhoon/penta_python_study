@@ -1,0 +1,47 @@
+import random
+import copy
+import pprint
+
+Lotto_Ball=[]
+Lotto_Num=[]
+Lotto_Num2=[]
+Lotto_Svr=[]
+LottoDic={} 
+
+def search4vowels(phrase: str) -> set:
+    """Return any vowels found in a supplied phrase."""
+    vowels = set('aeiou')
+    return vowels.intersection(set(phrase))
+
+
+def search4letters(phrase: str, letters: str='aeiou') -> set:
+    """Return a set of the 'letters' found in 'phrase'."""
+    return set(letters).intersection(set(phrase))
+
+def GetBall() -> set:
+	# Lotto_Ball 담기
+	# 1 ~ 45 number insert
+	for number in range(1,46):
+		Lotto_Ball.append(number)
+	return set(Lotto_Ball)
+
+def SelBall(Lotto_Ball2:set) -> set:
+	# Lotto 뽑기
+    # 초기화
+	for num in range(6):
+		Sel_Num=random.choice(Lotto_Ball2)
+		print(Sel_Num)
+		Lotto_Num2.append(Sel_Num)
+		Lotto_Ball2.remove(Sel_Num)   # 값을 지워 버림
+		print(Lotto_Num)
+	return set(Lotto_Ball2)
+
+    #print("Lotto Number: ", Lotto_Num2)
+    #Lotto_Srv=random.choice(Lotto_Ball2)
+    #print("Service Number : ", Lotto_Srv)
+
+	# Lotto 번호 저장 하기
+	# {1:{'L_N': [1,2,3,4,5,6],
+	#     'L_S': [7]}}
+    #LottoDic.setdefault(count+1,{'L_N':Lotto_Num2,
+     #                          'L_S':Lotto_Srv})

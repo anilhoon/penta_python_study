@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<p>You submitted the following data:</p>
+
+<table>
+	<tr>	
+		<td style="text-align:center;">숫자</td>
+		<td>횟수</td>		
+	</tr>
+	{% for key in the_lotto_row.keys() %}
+	<tr>
+		<td>{{the_lotto_row[key]}}</td>
+		<td style="text-align:center;">{{key}}</td>		
+	</tr>
+	{% endfor %}
+</table>
+<p>When "{{ the_rownum }}" is search for "{{ the_clnum }}", the following results are returned:</p>
+<h3>{{ the_results }}</h3>
+
+{% endblock %}

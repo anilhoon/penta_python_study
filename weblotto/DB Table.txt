@@ -1,0 +1,36 @@
+mysql -u root -p 
+
+passwd a s w !
+
+show databases;
+
+# DB 持失
+Create database lottoDB;
+
+# User 持失
+Create user 'lotto'@'localhost' identified by 'lottopasswd';
+grant all privileges on lottoDB.* to 'lotto'@'localhost';
+
+# lotto Table 持失
+Create Table lotto_db (
+lotto_key int auto_increment primary key,
+lotto_indate timestamp default current_timestamp,
+lotto_event int not null,
+lotto_date date not null,
+lotto_num1 int(2) not null,
+lotto_num2 int(2) not null,
+lotto_num3 int(2) not null,
+lotto_num4 int(2) not null,
+lotto_num5 int(2) not null,
+lotto_num6 int(2) not null,
+lotto_num7 int(2) not null
+);
+
+show tables;
+
+describe lotto_db;
+
+insert into  lotto_db (lotto_event, lotto_date, lotto_num1, lotto_num2, lotto_num3, lotto_num4, lotto_num5, lotto_num6, lotto_num7)
+value (1, '2019-11-30',2,32,43,21,9,3,7);
+
+select * from lotto_db;

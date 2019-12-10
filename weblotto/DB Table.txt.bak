@@ -1,0 +1,21 @@
+# DB 持失
+Create database lottoDB;
+
+# User 持失
+Create user 'lotto'@'localhost' identified by 'lottopasswd';
+grant all privileges on lottoDB.* to 'lotto'@'localhost';
+
+# lotto Table 持失
+Create Table lotto_db (
+lotto_key int auto_increment primary key,
+lotto_indate timestamp default current_timestamp,
+lotto_event int not null,
+lotto_date date not null,
+lotto_num1 int(2) not null,
+lotto_num2 int(2) not null,
+lotto_num3 int(2) not null,
+lotto_num4 int(2) not null,
+lotto_num5 int(2) not null,
+lotto_num6 int(2) not null,
+lotto_num7 int(2) not null
+);
